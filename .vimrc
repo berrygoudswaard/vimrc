@@ -33,6 +33,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'groenewege/vim-less'
 Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'editorconfig/editorconfig-vim'
 Bundle 'wombat256.vim'
 call vundle#end()
 
@@ -42,8 +43,8 @@ let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO':
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_php_checkers = ['php']
-let g:syntastic_php_phpcs_args = " --tab-width=0 --standard=CakePHP"
-let g:CommandTWildIgnore = '**/*\.jpg,**/*\.JPG,**/*\.png,**/*.\gif'
+let g:syntastic_php_phpcs_args = " --tab-width=0 --standard=PSR2"
+let g:CommandTWildIgnore = '**/*\.jpg,**/*\.JPG,**/*\.png,**/*.\gif,reports/*.*'
 
 set backspace=indent,eol,start
 set laststatus=2
@@ -65,7 +66,8 @@ set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set tabstop=8
 set nowrap
-
+set wildignore+=*.jpg,*.png,*.pdf,*.gif,*.swf,*.ico
+"
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
