@@ -38,8 +38,6 @@ Bundle 'wombat256.vim'
 call vundle#end()
 
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_dividers_override = ["\Ue0b0", "\Ue0b1", "\Ue0b2", "\Ue0b3"]
-let g:Powerline_symbols_override = { 'BRANCH': "\Ue0a0", 'LINE': "\Ue0a1", 'RO': "\Ue0a2" }
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_php_checkers = ['php']
@@ -64,9 +62,12 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set tabstop=8
 set nowrap
 set wildignore+=*.jpg,*.png,*.pdf,*.gif,*.swf,*.ico
+set diffopt+=iwhite
+set tabstop=4
+set shiftwidth=4
+set expandtab
 "
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -137,5 +138,6 @@ noremap <Leader>u :call PhpInsertUse()<CR>
 inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <Leader>e :call PhpExpandClass()<CR>
 map <C-F11> :!ctags -R -h ".php" --totals=yes --tag-relative=yes --PHP-kinds=+cf .<CR>
+match Error '\s\+$'
 
 colorscheme wombat256mod
