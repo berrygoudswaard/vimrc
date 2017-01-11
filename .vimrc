@@ -21,7 +21,7 @@ set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Bundle 'gmarik/Vundle.vim'
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'wincent/command-t'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'taglist.vim'
@@ -34,7 +34,10 @@ Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'groenewege/vim-less'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'editorconfig/editorconfig-vim'
+Bundle 'othree/html5.vim'
+Bundle 'embear/vim-localvimrc'
 Bundle 'wombat256.vim'
+Bundle 'leafgarland/typescript-vim'
 call vundle#end()
 
 let g:Powerline_symbols = 'fancy'
@@ -44,11 +47,17 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_php_checkers = ['php']
 let g:syntastic_php_phpcs_args = " --tab-width=0 --standard=PSR2"
-let g:CommandTWildIgnore = '**/*\.jpg,**/*\.JPG,**/*\.png,**/*.\gif,reports/*.*'
+let g:syntastic_html_tidy_ignore_errors=["<ion-", "discarding unexpected </ion-", " proprietary attribute \"ng-"]
+let g:CommandTWildIgnore = '**/*\.jpg,**/*\.JPG,**/*\.png,**/*.\gif,reports/*.*,**/node_modules/*,**/platforms/*'
+let g:CommandTMaxHeight = 0
+let g:CommandTMatchWindowReverse = 0
+let g:html_indent_inctags = "ion*"
+let g:localvimrc_ask = 0
 
 set backspace=indent,eol,start
 set laststatus=2
-set clipboard=unnamedplus
+set clipboard=unnamed
+set noswapfile
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -70,6 +79,8 @@ set diffopt+=iwhite
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set guifont=Roboto\ Mono\ Light\ for\ Powerline:h12
+set guioptions-=r
 "
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -141,5 +152,5 @@ inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <Leader>e :call PhpExpandClass()<CR>
 map <C-F11> :!ctags -R -h ".php" --totals=yes --tag-relative=yes --PHP-kinds=+cf .<CR>
 match Error '\s\+$'
-
 colorscheme wombat256mod
+
